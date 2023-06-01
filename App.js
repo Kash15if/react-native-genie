@@ -6,6 +6,7 @@ import { FlatList } from 'react-native';
 import GenericCard from "./customComponents/cards/GenericCard"
 import { useEffect, useState } from 'react';
 import Timeline from './customComponents/commons/TimeLine';
+import Tabs from './customComponents/tabs/Tabs';
 
 export default function App() {
 
@@ -38,10 +39,20 @@ export default function App() {
       flex: 1,
       // paddingTop: 22,
     },
-    item: {
+    item1: {
       padding: 10,
       fontSize: 18,
-      height: 44,
+      flex: 0.2
+    },
+    item2: {
+      padding: 10,
+      fontSize: 18,
+      flex: 0.6
+    },
+    item3: {
+      padding: 10,
+      fontSize: 18,
+      flex: 0.2
     },
   });
 
@@ -49,16 +60,23 @@ export default function App() {
   return (
     <View style={styles.container}>
 
+      <View style={styles.item1}>
+        <Tabs />
+      </View>
       {/* <GenericCard
         title={"Alexander the Great"}
         content={"Alexander the Great was a Macedonian king and military leader who lived from 356 BCE to 323 BCE. He is widely regarded as one of the greatest military strategists and conquerors in history. Alexander succeeded his father, King Philip II of Macedon, and went on to create one of the largest empires of the ancient world, stretching from Greece to Egypt and as far east as India."} /> */}
 
-      <Timeline />
+      <View style={styles.item2}>
+        <Timeline />
+      </View>
 
-      {menuList && <FlatList
-        data={menuList.map((item) => ({ key: item.label }))}
-        renderItem={({ item }) => <Text style={styles.item}>{item.key}</Text>}
-      />}
+      <View style={styles.item3}>
+        {menuList && <FlatList
+          data={menuList.map((item) => ({ key: item.label }))}
+          renderItem={({ item }) => <Text style={styles.item}>{item.key}</Text>}
+        />}
+      </View>
 
     </View>
   );
