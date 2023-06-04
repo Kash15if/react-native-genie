@@ -1,0 +1,31 @@
+Menu:-
+
+Menu id:- 
+Menu name:-
+AssignedPages [
+    {
+        pageId, label
+    },
+    {
+        pageId, label
+    }
+]
+
+PAges:-
+pageId, PAgeName, PageStructure , PageComponents
+
+
+
+PagesStructure:- [
+    {
+        CompId , CompNAme, CompType-> , ColSPan-rowspan-flex-size-sequence,etc
+    },
+    {
+        CompId , CompNAme ,COmpType-> , ColSPan-rowspan-flex-size-sequence,etc
+    },
+]
+
+
+PageComponent:{
+    Component , data in JSON Stringfied 
+}

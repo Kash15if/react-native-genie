@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { FlatList } from 'react-native';
 
@@ -8,31 +8,16 @@ import { useEffect, useState } from 'react';
 import Timeline from './customComponents/commons/TimeLine';
 import Tabs from './customComponents/tabs/Tabs';
 
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import Menu from './structures/Menu';
+import Page from "./structures/Page";
+
+
 export default function App() {
 
-  const [menuList, setMenuList] = useState();
-
-  useEffect(() => {
-
-    fetch('https://react-native-testapi-node.vercel.app')
-      .then(response => response.json())
-      .then(data => {
-        // Handle the response data
-        console.log(data.nav);
-        setMenuList(data.nav)
-      })
-      .catch(error => {
-        // Handle any errors
-        console.error(error);
-      });
-
-
-
-    // fetch("https://react-native-testapi-node.vercel.app/").then((res) => res.json()).then((data) => {
-    //   console.log(JSON.parse(data.nav))
-    //   setMenuList(JSON.parse(data.nav))
-    // })
-  }, [])
+  const Stack = createNativeStackNavigator();
 
   const styles = StyleSheet.create({
     container: {
@@ -58,27 +43,17 @@ export default function App() {
 
 
   return (
-    <View style={styles.container}>
 
-      <View style={styles.item1}>
-        <Tabs />
-      </View>
-      {/* <GenericCard
-        title={"Alexander the Great"}
-        content={"Alexander the Great was a Macedonian king and military leader who lived from 356 BCE to 323 BCE. He is widely regarded as one of the greatest military strategists and conquerors in history. Alexander succeeded his father, King Philip II of Macedon, and went on to create one of the largest empires of the ancient world, stretching from Greece to Egypt and as far east as India."} /> */}
 
-      <View style={styles.item2}>
-        <Timeline />
-      </View>
 
-      <View style={styles.item3}>
-        {menuList && <FlatList
-          data={menuList.map((item) => ({ key: item.label }))}
-          renderItem={({ item }) => <Text style={styles.item}>{item.key}</Text>}
-        />}
-      </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName={"Menu"}>
+        <Stack.Screen name={"Pages"} component={Page} />
+        <Stack.Screen name={"Menu"} component={Menu} />
+      </Stack.Navigator>
+    </NavigationContainer>
 
-    </View>
+
   );
 }
 
