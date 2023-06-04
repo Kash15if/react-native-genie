@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 import { FlatList, TouchableHighlight, Text, TouchableOpacity } from 'react-native';
 
-const Menu = () => {
+const Menu = ({ navigation }) => {
 
 
     const [menuList, setMenuList] = useState();
@@ -28,6 +28,7 @@ const Menu = () => {
     const handleItemClick = (item) => {
         console.log('Clicked item:', item);
         // Perform any actions or navigation here
+        navigation.navigate("Pages", { pageId: item.pageId });
     };
 
 
