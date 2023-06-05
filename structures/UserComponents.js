@@ -1,4 +1,7 @@
-import { View } from "react-native"
+// import { View, Text } from "react-native"
+
+import { useState, useEffect } from "react";
+import { ScrollView, Text, Button, View } from "react-native";
 import { getComponent } from "../services/getComponents";
 
 
@@ -10,7 +13,7 @@ const Component = ({ CompType, compId, compNAme }) => {
 
     useEffect(() => {
 
-        fetch('https://react-native-testapi-node.vercel.app/menu')
+        fetch('https://react-native-testapi-node.vercel.app/getComponentDataById/menu')
             .then(response => response.json())
             .then(data => {
                 // Handle the response data
@@ -24,7 +27,8 @@ const Component = ({ CompType, compId, compNAme }) => {
     }, [])
 
     return (<View>{
-        getComponent(CompType, compId, compNAme, compDetails)
+        compDetails && <Text>{compDetails.compData}</Text>
+        // getComponent(CompType, compId, compNAme, compDetails)
     }</View>);
 }
 
