@@ -17,8 +17,8 @@ const Component = ({ CompType, compId, compNAme }) => {
             .then(response => response.json())
             .then(data => {
                 // Handle the response data
-                console.log(data.compData);
-                setCompDetails(data)
+                // console.log(compId + data.compData);
+                setCompDetails(data.compData)
             })
             .catch(error => {
                 // Handle any errors
@@ -27,7 +27,7 @@ const Component = ({ CompType, compId, compNAme }) => {
     }, [])
 
     return (<View>{
-        getComponent(CompType, compId, compNAme, compDetails)
+        compDetails && getComponent(CompType, compId, compNAme, compDetails)
     }</View>);
 }
 

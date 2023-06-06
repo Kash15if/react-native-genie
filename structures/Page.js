@@ -5,7 +5,13 @@ import UserComponents from "./UserComponents";
 import { useState, useEffect } from "react";
 import { ScrollView, Text, Button } from "react-native";
 
-const Page = ({ pageId }) => {
+import { useRoute } from '@react-navigation/native';
+
+const Page = () => {
+
+
+    const route = useRoute();
+    const { pageId } = route.params;
 
 
     const [compList, setCompList] = useState();
@@ -16,7 +22,7 @@ const Page = ({ pageId }) => {
             .then(response => response.json())
             .then(data => {
                 // Handle the response data
-                console.log(data.PageStructure);
+                // console.log(data, pageId);
                 setCompList(data.PageStructure)
             })
             .catch(error => {
@@ -27,7 +33,7 @@ const Page = ({ pageId }) => {
     return (<ScrollView>
         <View>
             {
-                compList && compList.map((item) => <UserComponents CompType={item.CompType} compId={item.compId} compNAme={item.compNAme} />) //getComponent(item.CompType, item.compId, item.compNAme))
+                compList && compList.map((item, index) => <UserComponents key={index} CompType={item.CompType} compId={item.compId} compNAme={item.compNAme} />) //getComponent(item.CompType, item.compId, item.compNAme))
             }
             {/* <Text>Hello, World!</Text>
             <Button title="Click me" onPress={() => console.log('Button clicked')} /> */}

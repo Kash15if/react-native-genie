@@ -15,7 +15,7 @@ const Menu = ({ navigation }) => {
             .then(response => response.json())
             .then(data => {
                 // Handle the response data
-                console.log(data.assignedPages);
+                // console.log(data.assignedPages);
                 setMenuList(data.assignedPages)
             })
             .catch(error => {
@@ -26,8 +26,9 @@ const Menu = ({ navigation }) => {
 
 
     const handleItemClick = (item) => {
-        console.log('Clicked item:', item);
+        // console.log('Clicked item:', item.pageId);
         // Perform any actions or navigation here
+
         navigation.navigate("Pages", { pageId: item.pageId });
     };
 

@@ -1,12 +1,7 @@
-import { StatusBar } from 'expo-status-bar';
+
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
-import { FlatList } from 'react-native';
 
-import GenericCard from "./customComponents/cards/GenericCard"
-import { useEffect, useState } from 'react';
-import Timeline from './customComponents/commons/TimeLine';
-import Tabs from './customComponents/tabs/Tabs';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';

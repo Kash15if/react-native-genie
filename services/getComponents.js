@@ -4,22 +4,23 @@ import GenericCard from "../customComponents/cards/GenericCard"
 import TimeLine from "../customComponents/commons/TimeLine"
 import Tab from "../customComponents/tabs/Tabs"
 
-const getComponent = (type, id, name, dataIn) => {
+const getComponent = (type, id, name, data) => {
 
-    console.log(dataIn)
 
     if (type === "card") {
 
-        // const dataIn = JSON.parse(data);
+        const dataIn = JSON.parse(data);
         return <GenericCard title={dataIn.title} content={dataIn.content} />
     }
     else if (type === "timeline") {
-        // const dataIn = JSON.parse(data);
-        return <TimeLine data={dataIn} />
+        const dataIn = JSON.parse(data);
+        console.log(dataIn.data)
+        return <TimeLine data={dataIn.data} />
     }
     else if (type === "tab") {
-        // const dataIn = JSON.parse(data);
-        return <Tab data={dataIn} />
+        const dataIn = JSON.parse(data);
+        // console.log(dataIn)
+        return <Tab data={dataIn.data} />
     }
     else if (type === "carousel") {
 
