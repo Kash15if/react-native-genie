@@ -2,7 +2,7 @@ import React from 'react';
 import { Tab, Text, TabView } from '@rneui/themed';
 
 import { ScrollView } from 'react-native';
-export default () => {
+export default ({ data }) => {
     const [index, setIndex] = React.useState(0);
 
     return (
@@ -16,80 +16,24 @@ export default () => {
                 }}
                 variant="primary"
             >
-
-                <Tab.Item
-                    title="Recent"
-                    titleStyle={{ fontSize: 12 }}
-                    icon={{ name: 'timer', type: 'ionicon', color: 'white' }}
-                />
-                <Tab.Item
-                    title="favorite"
-                    titleStyle={{ fontSize: 12 }}
-                    icon={{ name: 'heart', type: 'ionicon', color: 'white' }}
-                />
-                <Tab.Item
-                    title="cart"
-                    titleStyle={{ fontSize: 12 }}
-                    icon={{ name: 'cart', type: 'ionicon', color: 'white' }}
-                />
-                <Tab.Item
-                    title="Recent"
-                    titleStyle={{ fontSize: 12 }}
-                    icon={{ name: 'timer', type: 'ionicon', color: 'white' }}
-                />
-                <Tab.Item
-                    title="favorite"
-                    titleStyle={{ fontSize: 12 }}
-                    icon={{ name: 'heart', type: 'ionicon', color: 'white' }}
-                />
-                <Tab.Item
-                    title="cart"
-                    titleStyle={{ fontSize: 12 }}
-                    icon={{ name: 'cart', type: 'ionicon', color: 'white' }}
-                />
-                <Tab.Item
-                    title="Recent"
-                    titleStyle={{ fontSize: 12 }}
-                    icon={{ name: 'timer', type: 'ionicon', color: 'white' }}
-                />
-                <Tab.Item
-                    title="favorite"
-                    titleStyle={{ fontSize: 12 }}
-                    icon={{ name: 'heart', type: 'ionicon', color: 'white' }}
-                />
-                <Tab.Item
-                    title="cart"
-                    titleStyle={{ fontSize: 12 }}
-                    icon={{ name: 'cart', type: 'ionicon', color: 'white' }}
-                />
-                <Tab.Item
-                    title="Recent"
-                    titleStyle={{ fontSize: 12 }}
-                    icon={{ name: 'timer', type: 'ionicon', color: 'white' }}
-                />
-                <Tab.Item
-                    title="favorite"
-                    titleStyle={{ fontSize: 12 }}
-                    icon={{ name: 'heart', type: 'ionicon', color: 'white' }}
-                />
-                <Tab.Item
-                    title="cart"
-                    titleStyle={{ fontSize: 12 }}
-                    icon={{ name: 'cart', type: 'ionicon', color: 'white' }}
-                />
-
+                {
+                    data.map(item => <Tab.Item
+                        title={item.title}
+                        titleStyle={{ fontSize: 12 }}
+                        icon={{ name: 'timer', type: 'ionicon', color: 'white' }}
+                    />
+                    )
+                }
             </Tab>
         </ScrollView>
             <TabView value={index} onChange={setIndex} animationType="spring">
-                <TabView.Item style={{ backgroundColor: 'red', width: '100%' }}>
-                    <Text h1>Recent</Text>
-                </TabView.Item>
-                <TabView.Item style={{ backgroundColor: 'blue', width: '100%' }}>
-                    <Text h1>Favorite</Text>
-                </TabView.Item>
-                <TabView.Item style={{ backgroundColor: 'green', width: '100%' }}>
-                    <Text h1>Cart</Text>
-                </TabView.Item>
+                {
+                    data.map(item =>
+                        <TabView.Item style={{ backgroundColor: 'red', width: '100%' }}>
+                            <Text h1>{item.content}</Text>
+                        </TabView.Item>
+                    )
+                }
             </TabView>
         </>
     );

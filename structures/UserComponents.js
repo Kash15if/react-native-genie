@@ -13,11 +13,11 @@ const Component = ({ CompType, compId, compNAme }) => {
 
     useEffect(() => {
 
-        fetch('https://react-native-testapi-node.vercel.app/getComponentDataById/menu')
+        fetch('https://react-native-testapi-node.vercel.app/getComponentDataById/' + compId)
             .then(response => response.json())
             .then(data => {
                 // Handle the response data
-                console.log(data);
+                console.log(data.compData);
                 setCompDetails(data)
             })
             .catch(error => {
@@ -27,8 +27,7 @@ const Component = ({ CompType, compId, compNAme }) => {
     }, [])
 
     return (<View>{
-        compDetails && <Text>{compDetails.compData}</Text>
-        // getComponent(CompType, compId, compNAme, compDetails)
+        getComponent(CompType, compId, compNAme, compDetails)
     }</View>);
 }
 
