@@ -9,7 +9,7 @@ const LoginScreen = ({ navigation }) => {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch("http://192.168.152.160:8081/user/login", {
+      const response = await fetch("http://192.168.14.160:8081/user/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

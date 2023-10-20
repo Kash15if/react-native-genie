@@ -12,7 +12,7 @@ const Component = ({ CompType, compId, compName }) => {
     (async () => {
       const token = await AsyncStorage.getItem("token");
       await fetch(
-        "http://192.168.152.160:8081/user/componentdata?compId=" + compId,
+        "http://192.168.14.160:8081/user/componentdata?compId=" + compId,
         {
           method: "GET",
           headers: {

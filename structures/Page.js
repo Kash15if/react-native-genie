@@ -17,7 +17,7 @@ const Page = () => {
   useEffect(() => {
     (async () => {
       const token = await AsyncStorage.getItem("token");
-      await fetch("http://192.168.152.160:8081/user/page?pageId=" + pageId, {
+      await fetch("http://192.168.14.160:8081/user/page?pageId=" + pageId, {
         method: "GET",
         headers: {
           Authorization: "Bearer " + token, // Example: JWT token or API key
@@ -30,7 +30,7 @@ const Page = () => {
               ? JSON.parse(data[0].structure.value).PageStructure
               : {};
           // console.log(JSON.parse(data[0].structure.value).PageStructure);
-          // console.log(pageStructure, pageId);
+          console.log(pageStructure, pageId);
           setCompList(pageStructure);
         })
         .catch((error) => {

@@ -18,7 +18,7 @@ const Menu = ({ navigation }) => {
     (async () => {
       const token = await AsyncStorage.getItem("token");
       // console.log(token);
-      await fetch("http://192.168.152.160:8081/user/menu", {
+      await fetch("http://192.168.14.160:8081/user/menu", {
         method: "GET",
         headers: {
           Authorization: "Bearer " + token, // Example: JWT token or API key
